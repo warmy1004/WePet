@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{passedData}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-list>
+  <ion-item ng-repeat="pet in petList" item="pet">
+    <ion-avatar item-start>
+      <img src="">
+    </ion-avatar>
+    <h2></h2>
+    <h3></h3>
+    <p></p>
+  </ion-item>
+</ion-list>
+
+<ion-content padding>
+  <button ion-button secondary (click) = "addPet()">{{myPetsData?.addButton}}</button>
+</ion-content>

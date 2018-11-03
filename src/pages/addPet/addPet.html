@@ -1,0 +1,111 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>{{addPetData.pageTitle}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <p>{{addPetData.requiredHelper}}</p>
+
+  <h4>{{addPetData.basicSectionTitle}}</h4>
+  <ion-item>
+    <ion-label floating>{{addPetData.name}}</ion-label>
+    <ion-input type="text" value=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>{{addPetData.dob}}</ion-label>
+    <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="today"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>{{addPetData.breed}}</ion-label>
+    <ion-select [(ngModel)]="selectedBreed"> 
+      <ion-option *ngFor="let breedType of breedTypes" [value]="breedType.value">{{breedType.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <h4>{{addPetData.bodySectionTitle}}</h4>
+  <ion-item>
+    <ion-label floating>{{addPetData.length}}</ion-label>
+    <ion-input type="text" value=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>{{addPetData.neckSize}}</ion-label>
+    <ion-input type="text" value=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>{{addPetData.chestSize}}</ion-label>
+    <ion-input type="text" value=""></ion-input>
+  </ion-item>
+
+  <h4>{{addPetData.careSectionTitle}}</h4>
+  <p>{{addPetData.careSectionHelper}}</p>
+  <ion-item>
+    <ion-label for="bathCare">{{addPetData.bathCare}}</ion-label>
+    <ion-checkbox id="bathCar" [(ngModel)]="bathCare"></ion-checkbox>
+  </ion-item>
+
+  <ion-list *ngIf="bathCare">
+    <ion-item *ngIf="!bathFrequencyOnOff">
+      <ion-label for="setRepeatsOnOff">{{addPetData.setRepeats}}</ion-label>
+      <ion-toggle id="setRepeatsOnOff" [(ngModel)]="bathRepeatsOnOff"></ion-toggle>
+    </ion-item>
+    <ion-grid *ngIf="bathRepeatsOnOff">
+      <ion-label for="bathDateSetup">{{addPetData.setDate}}</ion-label>
+      <ion-row id="bathDateSetup">
+          <ion-col *ngFor="let option of repeatsOptions;">
+              <button ion-button id="bathDateButtons" value="{{option.value}}" (click)="saveDateOptions($event, option.value)">
+                  {{option.name}}
+              </button>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-item *ngIf="bathRepeatsOnOff">
+      <ion-label for="bathTimeSetup">{{addPetData.setTime}}</ion-label>
+      <ion-datetime displayFormat="HH:mm A" pickerFormat="hh mm A" [(ngModel)]="bathTime" placeholder="{{addPetData.selectHelper}}"></ion-datetime>
+    </ion-item>
+
+    <ion-item *ngIf="!bathRepeatsOnOff">
+      <ion-label for="setFrequencyOnOff">{{addPetData.setFrequency}}</ion-label>
+      <ion-toggle id="setFrequencyOnOff" [(ngModel)]="bathFrequencyOnOff"></ion-toggle>
+    </ion-item>
+    <ion-item *ngIf="bathFrequencyOnOff">
+        <ion-label for="bathFrequencyStartDate">{{addPetData.start}}</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MMM DD YYYY" [(ngModel)]="bathStartDate" placeholder="{{addPetData.selectHelper}}"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="bathFrequencyOnOff">
+      <ion-label>{{addPetData.frequencyHelp}}</ion-label>
+      <ion-select [(ngModel)]="selectedFrequency" interface="popover" placeholder="{{addPetData.selectHelper}}"> 
+        <ion-option *ngFor="let option of frequencyOptions">{{option}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label for="dentalCare">{{addPetData.dentalCare}}</ion-label>
+    <ion-checkbox id="dentalCare" [(ngModel)]="dentalCare"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-label for="earCare">{{addPetData.earCare}}</ion-label>
+    <ion-checkbox id="earCare" [(ngModel)]="earCare"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-label for="nailCare">{{addPetData.nailCare}}</ion-label>
+    <ion-checkbox id="nailCare" [(ngModel)]="nailCare"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-label for="anusCare">{{addPetData.anusCare}}</ion-label>
+    <ion-checkbox id="anusCare" ([ngModel])="anusCare"></ion-checkbox>
+  </ion-item>
+
+  <button ion-button secondary (click) = "savePetInfo()">{{addPetData.saveBtn}}</button>
+</ion-content>
