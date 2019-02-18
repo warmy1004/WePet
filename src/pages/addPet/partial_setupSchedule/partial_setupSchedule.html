@@ -1,0 +1,42 @@
+<ion-list *ngIf="care">
+  {{care.name}}
+    <!-- <ion-item *ngIf="!selectedCare.frequencyOnOff">
+      <ion-label for="setRepeatsOnOff">{{setupScheduleData.setRepeats}}</ion-label>
+      <ion-toggle id="setRepeatsOnOff" [(ngModel)]="selectedCare.repeatsOnOff"></ion-toggle>
+    </ion-item>
+    <ion-grid *ngIf="bathRepeatsOnOff">
+      <ion-label for="bathDateSetup">{{addPetData.setDate}}</ion-label>
+      <ion-row id="bathDateSetup">
+          <ion-col *ngFor="let option of repeatsOptions;">
+              <button ion-button id="bathDateButtons" value="{{option.value}}" (click)="saveDateOptions($event, option.value)">
+                  {{option.name}}
+              </button>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+  
+    <ion-item *ngIf="bathRepeatsOnOff">
+      <ion-label for="bathTimeSetup">{{addPetData.setTime}}</ion-label>
+      <ion-datetime id="bathTimeSetup" displayFormat="HH:mm A" pickerFormat="hh mm A" [(ngModel)]="bathTime" placeholder="{{addPetData.selectHelper}}"></ion-datetime>
+    </ion-item>
+  
+    <ion-item *ngIf="selectedCare.repeatsOnOff">
+      <ion-label for="setFrequencyOnOff">{{setupScheduleData.setFrequency}}</ion-label>
+      <ion-toggle id="setFrequencyOnOff" [(ngModel)]="selectedCare.frequencyOnOff"></ion-toggle>
+    </ion-item>
+  
+    <ion-item *ngIf="bathFrequencyOnOff">
+        <ion-label for="bathFrequencyStartDate">{{addPetData.start}}</ion-label>
+        <ion-datetime id="bathFrequencyStartDate" displayFormat="MM/DD/YYYY" pickerFormat="MMM DD YYYY" [(ngModel)]="bathStartDate" placeholder="{{addPetData.selectHelper}}"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="bathFrequencyOnOff">
+      <ion-label for="frequencySetup">{{addPetData.frequencyHelp}}</ion-label>
+      <ion-select id="frequencySetup" [(ngModel)]="selectedFrequency" interface="popover" placeholder="{{addPetData.selectHelper}}"> 
+        <ion-option *ngFor="let option of frequencyOptions">{{option}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="bathFrequencyOnOff">
+      <ion-label for="bathFrequencyTimeSetup">{{addPetData.setTime}}</ion-label>
+      <ion-datetime id="bathFrequencyTimeSetup" displayFormat="HH:mm A" pickerFormat="hh mm A" [(ngModel)]="bathTime" placeholder="{{addPetData.selectHelper}}"></ion-datetime>
+    </ion-item> -->
+  </ion-list> 

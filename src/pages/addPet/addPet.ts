@@ -3,6 +3,9 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { GlobalVariableProvider } from '../../providers/globalVariableProvider';
 
+import { PartialSetupSchedule} from './partial_setupSchedule/partial_setupSchedule';
+import { Care } from './care';
+
 @Component({
   selector: 'page-addPet',
   templateUrl: 'addPet.html'
@@ -10,15 +13,11 @@ import { GlobalVariableProvider } from '../../providers/globalVariableProvider';
 
 export class AddPetPage {
   private addPetData : {};
-  breedTypes;
-  public selectedBreed : string;
-  today;
-  bathCare: boolean;
-  bathDate: string[];
-  repeatsOptions;
-  frequencyOptions;
-  dentalCare: boolean;
-  selectedRepeatDateList: {};
+  private breedTypes : {};
+  public selectedBreed : string = '';
+  private careDetails : Care[] =[];
+  selectedCareDetail: Care;
+  today : string;
 
   constructor(public navCtrl: NavController, public navParams : NavParams, public globalVariableProvider : GlobalVariableProvider ) {
     this.today = new Date().toISOString();
@@ -27,9 +26,17 @@ export class AddPetPage {
   ngOnInit() {
     this.addPetData = this.globalVariableProvider.getMainContentData('addPet');
     this.breedTypes = this.globalVariableProvider.getBreedTypesData();
-    this.selectedBreed = '';
-    this.repeatsOptions = this.addPetData['repeatsOptions'];
-    this.frequencyOptions = this.addPetData['frequencyOptions'];
+    let careOptions = this.addPetData['careOptions'];
+    for (let _i=0; _i < careOptions.length; _i++){
+      this.careDetails.push(
+        { id : _i, 
+          name: careOptions[_i].name, 
+          value: careOptions[_i].value, 
+          selected: false, 
+          frequencyOnOff: false,
+          repeatsOnOff: false
+        });
+    }
   }
 
   ionViewWillEnter() {
@@ -44,15 +51,20 @@ export class AddPetPage {
     this.selectedBreed = breed;
   }
 
-  saveDateOptions(event,selectedOption) {
-    if(this.selectedRepeatDateList && this.selectedRepeatDateList[event.currentTarget.id]) {
-      let temp =  this.selectedRepeatDateList[event.currentTarget.id];
-      temp.push(selectedOption);
-      this.selectedRepeatDateList[event.currentTarget.id] = temp;
-    } else {
-      this.selectedRepeatDateList[event.currentTarget.id] = selectedOption;
-    }
+  onCheckCare(selectedCareDetail:Care): void {
+    this.selectedCareDetail = selectedCareDetail;
   }
+
+  // saveDateOptions(event,selectedOption) {
+  //   let targetId =  event.currentTarget.id;
+  //   if(this.selectedRepeatDateList && this.selectedRepeatDateList[targetId]) {
+  //     let temp =  this.selectedRepeatDateList[targetId];
+  //     temp.push(selectedOption);
+  //     this.selectedRepeatDateList[targetId] = temp;
+  //   } else {
+  //     this.selectedRepeatDateList[targetId] = [selectedOption];
+  //   }
+  // }
 
   savePetInfo() {
     //need to add delete all information

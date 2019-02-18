@@ -14,28 +14,34 @@
         "chestSize": "Chest size", 
         "careSectionTitle": "Select Cares for Notification", 
         "careSectionHelper": "Please select which cares need to be tracked and alarmed. You can select multiple cares.",
-        "bathCare": "Bath", 
-        "dentalCare": "Brush the teeth", 
-        "earCare": "Ear cleaning", 
-        "nailCare": "Nail clipping", 
-        "anusCare": "Remove anus",
-        "setRepeats": "Set Repeats", 
-        "setFrequency": "Set Frequency",
-        "frequencyHelp": "Every",
-        "frequencyOptions": ["Week", "2 Weeks", "3 Weeks", "4 Weeks", "5 Weeks", "6 Weeks", "7 Weeks", "8 Weeks", "3 Months", "4 Months", "5 Months", "6 Months", "8 Months"],
-        "setDate": "Set date",
-        "repeatsOptions": [
-            {"name": "S" , "value": "sunday"}, 
-            {"name": "M" , "value": "monday"}, 
-            {"name": "Tu" , "value": "tuesday"}, 
-            {"name": "W" , "value": "wednesday"}, 
-            {"name": "Th" , "value": "thursday"}, 
-            {"name": "F" , "value": "friday"}, 
-            {"name": "S" , "value": "saturday"}
+        "careOptions": [
+            {"name":"Bathing", "value":"bathCare"},
+            {"name":"Tooth Brushing", "value":"dentalCare"},
+            {"name":"Ear Cleaning", "value":"earCare"},
+            {"name":"Nail Clipping", "value":"nailCare"},
+            {"name":"Expressing Anal Glands", "value":"analCare"},
+            {"name":"Grooming", "value":"groomingCare"},
+            {"name":"Medicines", "value":"medCare"} 
         ],
-        "setTime": "Set time",
-        "start": "Start",
-        "selectHelper": "Please Select",
+        "setupSchedule": {
+            "setRepeats": "Set Repeats", 
+            "setFrequency": "Set Frequency",
+            "frequencyHelp": "Every",
+            "frequencyOptions": ["Week", "2 Weeks", "3 Weeks", "4 Weeks", "5 Weeks", "6 Weeks", "7 Weeks", "8 Weeks", "3 Months", "4 Months", "5 Months", "6 Months", "8 Months"],
+            "setDate": "Set date",
+            "repeatsOptions": [
+                {"name": "S" , "value": "sunday"}, 
+                {"name": "M" , "value": "monday"}, 
+                {"name": "Tu" , "value": "tuesday"}, 
+                {"name": "W" , "value": "wednesday"}, 
+                {"name": "Th" , "value": "thursday"}, 
+                {"name": "F" , "value": "friday"}, 
+                {"name": "S" , "value": "saturday"}
+            ],
+            "setTime": "Set time",
+            "start": "Start",
+            "selectHelper": "Please Select"
+        },
         "saveBtn" : "Save"
     }
 }

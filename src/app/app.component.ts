@@ -13,6 +13,7 @@ import { ListPage } from '../pages/list/list';
 @Component({
   templateUrl: 'app.html'
 })
+
 export class WePetApp {
   @ViewChild(Nav) nav: Nav;
 
